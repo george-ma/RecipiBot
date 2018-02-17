@@ -1,13 +1,7 @@
 import random
-from flask import Flask
 
-import requests
-import simplejson
 import praw
 import re
-import psycopg2
-import tweepy
-import credentials
 
 reddit = praw.Reddit(user_agent='RecipiBot',
                          client_id='mieR1fbOj7yQAQ',
