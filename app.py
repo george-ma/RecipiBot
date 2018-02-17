@@ -39,7 +39,9 @@ def webhook():
 
                     sender_id = messaging_event["sender"]["id"]
                     attachment_link = messaging_event["message"]["attachments"][0]["payload"]["url"]
-                    send_message(sender_id, output_prediction(attachment_link))
+                    tuple_output = output_prediction(attachment_link)
+                    send_message(sender_id, "Image recognized as: " + tuple_output[0])                  
+                    send_message(sender_id, tuple_output[1])
 
                 elif messaging_event.get("message"):  # someone sent us a message
 
