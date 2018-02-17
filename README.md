@@ -9,7 +9,9 @@ Created at the CSSU x Platterz 2018 Hackathon using Clarifai for the image proce
 
 Required
 ---------
+To Compile:
 [Python 2.7.14](https://www.python.org/downloads/)
+To Run on Facebook, need permissions (until facebook allows the app to be public)
 
 Details
 ----------
