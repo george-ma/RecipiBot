@@ -3,7 +3,7 @@ import sys
 import json
 from datetime import datetime
 
-from recipe_test import *
+from ImageCheck import *
 import requests
 from flask import Flask, request
 
@@ -39,14 +39,14 @@ def webhook():
 
                     sender_id = messaging_event["sender"]["id"]
                     attachment_link = messaging_event["message"]["attachments"][0]["payload"]["url"]
-                    send_message(sender_id, attachment_link)
+                    send_message(sender_id, output_prediction(attachment_link))
 
                 elif messaging_event.get("message"):  # someone sent us a message
 
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
-                    send_message(sender_id, get_recipe(message_text.split(),[])[0])
+                    send_message(sender_id, get_recipe(message_text.split(", "),[])[0])
 
                     # send_message(sender_id, "message_text " + message_text)
 
