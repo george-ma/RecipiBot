@@ -42,20 +42,17 @@ def webhook():
 
                     send_message(sender_id, "message_text " + message_text)
 
-                else if messaging_event["message"].get("attachments"):
+                if messaging_event["message"].get("attachments"):
                     attachment_link = messaging_event["message"]["attachments"][0]["payload"]["url"]
                     send_message(sender_id, attachment_link)
 
-                else if messaging_event.get("delivery"):  # delivery confirmation
+                if messaging_event.get("delivery"):  # delivery confirmation
                     pass
 
-                else if messaging_event.get("optin"):  # optin confirmation
+                if messaging_event.get("optin"):  # optin confirmation
                     pass
 
-                else if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
-                    pass
-
-                else
+                if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
                     pass
 
     return "ok", 200
