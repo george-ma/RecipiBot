@@ -31,7 +31,7 @@ def get_recipe(ingredients_list, used_recipe):
     recipe_submission = list(set(subreddit.search('flair:"Recipe"')) - set(used_recipe))
     not_found = True
     number = len(ingredients_list)
-    while not_found and len(recipe_submission) > 0:
+    while not_found and (len(recipe_submission) > 0):
         id = random.choice(recipe_submission)
         body = reddit.submission(id=id)
         index = extract_ingrediants(body.comments[0].body.splitlines())
