@@ -50,7 +50,7 @@ def get_recipe(ingredients_list, used_recipe):
         count += 1
         recipe_submission.remove(id)
 
-    return (0, 0, 0) if not_found else ("http://www.reddit.com" + body.permalink, body.title, id)
+    return ('0', '0', '0') if not_found else ("http://www.reddit.com" + body.permalink, body.title, id)
 
 
 
