@@ -32,7 +32,7 @@ def get_recipe(ingredients_list, used_recipe):
     not_found = True
     count = 0
     number = len(ingredients_list)
-    while count < 20 and not_found and (len(recipe_submission) > 0):
+    while count < 50 and not_found and (len(recipe_submission) > 0):
         id = random.choice(recipe_submission)
         body = reddit.submission(id=id)
         index = extract_ingrediants(body.comments[0].body.splitlines())
@@ -50,7 +50,7 @@ def get_recipe(ingredients_list, used_recipe):
         count += 1
         recipe_submission.remove(id)
 
-    return ('0', '0', '0') if not_found else ("http://www.reddit.com" + body.permalink, body.title, id)
+    return ('No recipes found.', '0', '0') if not_found else ("http://www.reddit.com" + body.permalink, body.title, id)
 
 
 
