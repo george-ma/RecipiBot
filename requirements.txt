@@ -8,4 +8,4 @@ itsdangerous==0.24
 requests==2.10.0
 wsgiref==0.1.2
 praw==5.4.0
-clarifai=2.0.32
+clarifai==2.0.32
