@@ -35,6 +35,8 @@ def webhook():
             for messaging_event in entry["messaging"]:
 
                 if messaging_event["message"].get("attachments"):
+                    
+                    sender_id = messaging_event["sender"]["id"]
                     attachment_link = messaging_event["message"]["attachments"][0]["payload"]["url"]
                     send_message(sender_id, attachment_link)
 
