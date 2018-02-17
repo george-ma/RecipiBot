@@ -40,6 +40,7 @@ def webhook():
                     sender_id = messaging_event["sender"]["id"]
                     attachment_link = messaging_event["message"]["attachments"][0]["payload"]["url"]
                     tuple_output = output_prediction(attachment_link)
+                    send_message(sender_id, "We are looking for recipes with your ingredients")
                     send_message(sender_id, "Image recognized as: " + tuple_output[0])                  
                     send_message(sender_id, tuple_output[1])
 
@@ -48,6 +49,7 @@ def webhook():
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
+                    send_message(sender_id, "We are looking for recipes with your ingredients")
                     send_message(sender_id, get_recipe(message_text.split(", "),[])[0])
 
                     # send_message(sender_id, "message_text " + message_text)
