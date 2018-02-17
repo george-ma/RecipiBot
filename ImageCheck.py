@@ -8,4 +8,4 @@ def output_prediction(word):
     image = ClImage(url=word)
     data = model.predict([image])
     food_list = [data['outputs'][0]['data']['concepts'][0]['name']]
-    return get_recipe(food_list, [])[0]
+    return (food_list[0], get_recipe(food_list, [])[0])
