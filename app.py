@@ -3,6 +3,8 @@ import sys
 import json
 from datetime import datetime
 
+from ImageCheck import *
+
 import requests
 from flask import Flask, request
 
@@ -35,10 +37,10 @@ def webhook():
             for messaging_event in entry["messaging"]:
 
                 if messaging_event["message"].get("attachments"):
-                    
+
                     sender_id = messaging_event["sender"]["id"]
                     attachment_link = messaging_event["message"]["attachments"][0]["payload"]["url"]
-                    send_message(sender_id, attachment_link)
+                    send_message(sender_id, output_prediction(attachment_link))
 
                 elif messaging_event.get("message"):  # someone sent us a message
 
