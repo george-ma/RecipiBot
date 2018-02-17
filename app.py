@@ -40,20 +40,22 @@ def webhook():
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
 
-                    send_message(sender_id, "message_text")
+                    send_message(sender_id, "message_text " + message_text)
 
-                if messaging_event["message"].get("attachments"):
+                else if messaging_event["message"].get("attachments"):
                     attachment_link = messaging_event["message"]["attachments"][0]["payload"]["url"]
-                    print("Image received, boss!")
-                    print(attachment_link)
+                    send_message(sender_id, attachment_link)
 
-                if messaging_event.get("delivery"):  # delivery confirmation
+                else if messaging_event.get("delivery"):  # delivery confirmation
                     pass
 
-                if messaging_event.get("optin"):  # optin confirmation
+                else if messaging_event.get("optin"):  # optin confirmation
                     pass
 
-                if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
+                else if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
+                    pass
+
+                else
                     pass
 
     return "ok", 200
