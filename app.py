@@ -2,10 +2,10 @@ import os
 import sys
 import json
 from datetime import datetime
-
 from ImageCheck import *
 import requests
 from flask import Flask, request
+import re
 
 app = Flask(__name__)
 
@@ -49,7 +49,7 @@ def webhook():
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
-                    if attachment_link == "help":
+                    if re.search("help", message_text, re.IGNORECASE):
                         send_message(sender_id, "Hi! You can either 1) message me food ingredients separated by commas" + 
                         "or 2) send me a picture of an ingredient and I will search for an appropriate recipe.")
                     elif:
