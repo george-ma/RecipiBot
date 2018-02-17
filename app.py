@@ -50,9 +50,12 @@ def webhook():
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
                     if re.search("help", message_text, re.IGNORECASE):
-                        send_message(sender_id, "Hi! You can either 1) message me food ingredients separated by commas" + 
+                        send_message(sender_id, "Hi! You can either 1) message me food ingredients separated by commas " + 
                         "or 2) send me a picture of an ingredient and I will search for an appropriate recipe.")
-                    elif:
+                    elif re.search("credit", message_text, re.IGNORECASE):
+                        send_message(sender_id, "This bot was developed by Soho, Moho, Shinho, and Madiho. " + 
+                        "Please send us an email to cspost2017@gmail.com for any inquires!")
+                    else:
                         send_message(sender_id, "We are looking for recipes with your ingredients.......")
                         send_message(sender_id, get_recipe(message_text.split(", "),[])[0])
 
