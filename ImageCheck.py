@@ -1,7 +1,6 @@
 from clarifai.rest import ClarifaiApp
 from clarifai.rest import Image as ClImage
 from recipe_test import *
-import webbrowser
 
 def output_prediction(word):
     app = ClarifaiApp(api_key='b93c9746c9cc4a79baec13d0a83739cb')
@@ -9,4 +8,4 @@ def output_prediction(word):
     image = ClImage(url=word)
     data = model.predict([image])
     food_list = [data['outputs'][0]['data']['concepts'][0]['name']]
-    webbrowser.open(get_recipe(food_list)[0])
+    return get_recipe(food_list)[0]
