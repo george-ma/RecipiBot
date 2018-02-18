@@ -5,7 +5,7 @@ Find and create new exciting recipes from existing ingredients around your house
 
 Chat to the Bot using text or by utilizing your phone camera/uploading images. 
 
-Created at the CSSU x Platterz 2018 Hackathon using Clarifai for the image processing.
+Won <b> top 3 in our category and top 5 overall</b> at the CSSU x Platterz 2018 Hackathon using Clarifai for the image processing.
 
 Required
 ---------
