@@ -10,7 +10,7 @@ reddit = praw.Reddit(user_agent='RecipiBot',
     # assume you have a Reddit instance bound to variable `reddit`
 subreddit = reddit.subreddit('recipes')
 
-def extract_ingrediants(body):
+def extract_ingredients(body):
     ingredients_index = [i for i, item in enumerate(body) if re.search('.*Ingredients.*', item)]
     instructions_index = [i for i, item in enumerate(body) if re.search('.*Instructions.*|.*Directions.*|.*Method.*|.*Preparation.*', item, re.IGNORECASE)]
     return (ingredients_index[0] if len(ingredients_index) > 0 else 0, instructions_index[0] if len(instructions_index) > 0 else 0)
@@ -19,7 +19,7 @@ def extract_ingrediants(body):
 #     print("\n DIVIDE \n")
 #     body = reddit.submission(id=random.choice(recipe_submission)).comments[0].body
 #     # print(body)
-#     a = extract_ingrediants(body.splitlines())
+#     a = extract_ingredients(body.splitlines())
 #     if len(a) < 2:
 #         continue
 #     for i in range(a[0], a[1]):
@@ -35,7 +35,7 @@ def get_recipe(ingredients_list, used_recipe):
     while count < 50 and not_found and (len(recipe_submission) > 0):
         id = random.choice(recipe_submission)
         body = reddit.submission(id=id)
-        index = extract_ingrediants(body.comments[0].body.splitlines())
+        index = extract_ingredients(body.comments[0].body.splitlines())
         found = 0
         for i in range(index[0], index[1]):
             body_split = body.comments[0].body.splitlines()[i]
